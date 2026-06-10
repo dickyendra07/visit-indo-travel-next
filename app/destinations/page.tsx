@@ -48,14 +48,14 @@ export default function DestinationsPage() {
               </h2>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mobile-scroll md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3">
               {destinations.map((item) => (
                 <Link
                   key={item.slug}
                   href={`/destinations/${item.slug}`}
-                  className="group overflow-hidden border border-black/10 bg-white shadow-[0_24px_80px_rgba(0,0,0,.08)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_34px_100px_rgba(0,0,0,.14)]"
+                  className="mobile-snap-card group overflow-hidden border border-black/10 bg-white shadow-[0_24px_80px_rgba(0,0,0,.08)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_34px_100px_rgba(0,0,0,.14)]"
                 >
-                  <div className="relative h-[300px] overflow-hidden">
+                  <div className="relative h-[250px] overflow-hidden md:h-[300px]">
                     <div
                       className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-105"
                       style={{ backgroundImage: `url('${item.image}')` }}
@@ -71,7 +71,7 @@ export default function DestinationsPage() {
                     </div>
                   </div>
 
-                  <div className="p-6">
+                  <div className="p-5 md:p-6">
                     <p className="text-[15px] leading-8 text-[#111d18]/66">
                       {item.shortDescription}
                     </p>

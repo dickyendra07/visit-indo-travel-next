@@ -52,13 +52,13 @@ export default function JourneysPage() {
               </p>
             </div>
 
-            <div className="grid gap-7 md:grid-cols-2">
+            <div className="mobile-scroll md:grid md:grid-cols-2 md:gap-7">
               {travelPackages.map((item) => (
                 <article
                   key={item.slug}
-                  className="group overflow-hidden border border-black/10 bg-white shadow-[0_24px_80px_rgba(0,0,0,.08)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_34px_100px_rgba(0,0,0,.14)]"
+                  className="mobile-snap-card group overflow-hidden border border-black/10 bg-white shadow-[0_24px_80px_rgba(0,0,0,.08)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_34px_100px_rgba(0,0,0,.14)]"
                 >
-                  <div className="relative h-[340px] overflow-hidden">
+                  <div className="relative h-[260px] overflow-hidden md:h-[340px]">
                     <div
                       className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-105"
                       style={{ backgroundImage: `url('${item.image}')` }}
@@ -74,7 +74,7 @@ export default function JourneysPage() {
                     </div>
                   </div>
 
-                  <div className="p-7 md:p-8">
+                  <div className="p-5 md:p-8">
                     <div className="mb-6 flex flex-wrap gap-2">
                       <span className="rounded-full border border-black/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#111d18]/62">
                         {item.region}

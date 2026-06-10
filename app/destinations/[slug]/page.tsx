@@ -85,7 +85,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
               </h2>
             </div>
 
-            <div className="grid gap-px overflow-hidden border border-black/10 bg-black/10 md:grid-cols-2">
+            <div className="detail-compact-grid overflow-hidden border border-black/10 bg-black/10 md:grid md:grid-cols-2 md:gap-px">
               {item.bestFor.map((best) => (
                 <div key={best} className="bg-white p-8">
                   <p className="mb-10 text-2xl text-[#a8782d]">✦</p>
@@ -109,9 +109,9 @@ export default async function DestinationDetailPage({ params }: PageProps) {
               </h2>
             </div>
 
-            <div className="grid gap-5">
+            <div className="detail-mobile-scroll md:grid md:gap-5">
               {item.experiences.map((experience, index) => (
-                <article key={experience} className="border border-white/10 bg-white/[0.055] p-7">
+                <article key={experience} className="detail-mobile-card border border-white/10 bg-white/[0.055] p-5 md:p-7">
                   <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.26em] text-[#d7aa51]">
                     Experience {String(index + 1).padStart(2, "0")}
                   </p>
@@ -135,9 +135,9 @@ export default async function DestinationDetailPage({ params }: PageProps) {
               </h2>
             </div>
 
-            <div className="grid gap-4">
+            <div className="detail-mobile-scroll md:grid md:gap-4">
               {item.sampleRoutes.map((route) => (
-                <div key={route} className="border border-black/10 bg-white p-7">
+                <div key={route} className="detail-mobile-card border border-black/10 bg-white p-5 md:p-7">
                   <p className="font-display text-[34px] leading-none">
                     {route}
                   </p>
@@ -158,12 +158,12 @@ export default async function DestinationDetailPage({ params }: PageProps) {
               </h2>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="detail-mobile-scroll md:grid md:grid-cols-2 md:gap-6">
               {packagesToShow.map((pkg) => (
                 <Link
                   key={pkg.slug}
                   href={`/journeys/${pkg.slug}`}
-                  className="group overflow-hidden border border-white/10 bg-white/[0.055] transition hover:-translate-y-2 hover:border-[#d7aa51]/45"
+                  className="detail-mobile-card group overflow-hidden border border-white/10 bg-white/[0.055] transition hover:-translate-y-2 hover:border-[#d7aa51]/45"
                 >
                   <div className="relative h-[300px] overflow-hidden">
                     <div

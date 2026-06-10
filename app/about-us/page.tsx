@@ -50,7 +50,7 @@ export default function AboutUsPage() {
               <p className="mb-6 text-[12px] font-semibold uppercase tracking-[0.34em] text-[#d7aa51]">
                 About Visit Indo Travel
               </p>
-              <h1 className="font-display text-[58px] leading-[0.9] tracking-[-0.055em] md:text-[94px]">
+              <h1 className="mobile-hero-title font-display text-[58px] leading-[0.9] tracking-[-0.055em] md:text-[94px]">
                 A refined way to experience Indonesia.
               </h1>
               <p className="mt-8 max-w-2xl text-[18px] leading-9 text-white/72">
@@ -68,12 +68,12 @@ export default function AboutUsPage() {
               <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#a8782d]">
                 Our Story
               </p>
-              <h2 className="font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[74px]">
+              <h2 className="mobile-section-title font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[74px]">
                 Indonesia, arranged personally.
               </h2>
             </div>
 
-            <div className="space-y-7 text-[18px] leading-9 text-[#111d18]/68">
+            <div className="space-y-5 text-[18px] leading-9 text-[#111d18]/68">
               <p>
                 Visit Indo Travel was created to help international travelers
                 explore Indonesia in a more private, comfortable, and considered
@@ -102,12 +102,12 @@ export default function AboutUsPage() {
               <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
                 What We Believe
               </p>
-              <h2 className="font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
+              <h2 className="mobile-section-title font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
                 Luxury is not noise. It is comfort, timing, and care.
               </h2>
             </div>
 
-            <div className="grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-4">
+            <div className="mobile-two-grid overflow-hidden border border-white/10 bg-white/10 md:grid md:grid-cols-4 md:gap-px">
               {values.map((item) => (
                 <article key={item.title} className="bg-[#07110e] p-8 md:p-9">
                   <p className="mb-12 text-2xl text-[#d7aa51]">✦</p>
@@ -129,14 +129,14 @@ export default function AboutUsPage() {
               <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#a8782d]">
                 How We Work
               </p>
-              <h2 className="font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
+              <h2 className="mobile-section-title font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
                 From first idea to private arrival.
               </h2>
             </div>
 
-            <div className="divide-y divide-black/10 border-y border-black/10">
+            <div className="mobile-page-scroll divide-y divide-black/10 border-y border-black/10 md:block">
               {process.map((item, index) => (
-                <div key={item} className="grid gap-5 py-7 md:grid-cols-[80px_1fr]">
+                <div key={item} className="mobile-page-card grid gap-4 border border-black/10 bg-white p-5 md:border-0 md:bg-transparent md:p-0 md:py-7 md:grid-cols-[80px_1fr]">
                   <p className="font-display text-[42px] leading-none text-[#a8782d]">
                     0{index + 1}
                   </p>

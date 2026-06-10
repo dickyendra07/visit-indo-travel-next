@@ -43,7 +43,7 @@ export default function ContactPage() {
               <p className="mb-6 text-[12px] font-semibold uppercase tracking-[0.34em] text-[#d7aa51]">
                 Contact Visit Indo Travel
               </p>
-              <h1 className="font-display text-[58px] leading-[0.9] tracking-[-0.055em] md:text-[94px]">
+              <h1 className="mobile-hero-title font-display text-[58px] leading-[0.9] tracking-[-0.055em] md:text-[94px]">
                 Begin with a private consultation.
               </h1>
               <p className="mt-8 max-w-2xl text-[18px] leading-9 text-white/72">
@@ -61,7 +61,7 @@ export default function ContactPage() {
               <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#a8782d]">
                 Enquire Now
               </p>
-              <h2 className="font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
+              <h2 className="mobile-section-title font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
                 Share your travel request.
               </h2>
               <p className="mt-7 max-w-xl text-[17px] leading-9 text-[#111d18]/65">
@@ -70,7 +70,7 @@ export default function ContactPage() {
                 itinerary direction.
               </p>
 
-              <div className="mt-10 grid gap-px overflow-hidden border border-black/10 bg-black/10">
+              <div className="mt-8 mobile-two-grid overflow-hidden border border-black/10 bg-black/10 md:grid md:gap-px">
                 {contactItems.map((item) => (
                   <Link
                     key={item.label}
@@ -98,13 +98,13 @@ export default function ContactPage() {
               <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
                 Company Contact
               </p>
-              <h2 className="font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
+              <h2 className="mobile-section-title font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
                 Managed by CV. Blue Sky.
               </h2>
             </div>
 
-            <div className="grid gap-8 text-white/65">
-              <div className="border border-white/10 p-8">
+            <div className="grid gap-5 text-white/65 md:gap-8">
+              <div className="border border-white/10 p-5 md:p-8">
                 <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#d7aa51]">
                   Address
                 </p>
@@ -115,7 +115,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-2">
+              <div className="mobile-two-grid overflow-hidden border border-white/10 bg-white/10 md:grid md:grid-cols-2 md:gap-px">
                 <div className="bg-[#07110e] p-7">
                   <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#d7aa51]">
                     Business Email

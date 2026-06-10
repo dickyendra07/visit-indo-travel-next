@@ -2,199 +2,343 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const destinations = [
-  "Bali & Eastern Islands",
-  "Java",
-  "Sumatra",
-  "Kalimantan",
-  "Sulawesi",
-  "Maluku",
-  "Papua",
-];
-
-const experiences = [
-  "Luxury Stays",
-  "Private Transfers",
-  "Cultural Heritage",
-  "Volcano Sunrise",
-  "Island Escapes",
-  "Family & Halal-Friendly Travel",
+  { label: "Bali & Eastern Islands", href: "/destinations/bali-eastern-islands" },
+  { label: "Java", href: "/destinations/java" },
+  { label: "Sumatra", href: "/destinations/sumatra" },
+  { label: "Kalimantan", href: "/destinations/kalimantan" },
+  { label: "Sulawesi", href: "/destinations/sulawesi" },
+  { label: "Maluku", href: "/destinations/maluku" },
+  { label: "Papua", href: "/destinations/papua" },
 ];
 
 const journeys = [
-  "Java Discovery Journey",
-  "Romantic Indonesia Honeymoon",
-  "Bali and Eastern Islands",
-  "Custom Private Journey",
+  { label: "Java Discovery Journey", href: "/journeys/java-discovery-journey" },
+  { label: "Bali Luxury Escape", href: "/journeys/bali-luxury-escape" },
+  { label: "Komodo & Eastern Islands", href: "/journeys/komodo-eastern-islands" },
+  { label: "Romantic Indonesia Honeymoon", href: "/journeys/romantic-indonesia-honeymoon" },
 ];
 
+const mainLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Journeys", href: "/journeys" },
+  { label: "Destinations", href: "/destinations" },
+  { label: "Contact", href: "/contact" },
+];
+
+const arabicLinks = [
+  { label: "الرئيسية", href: "/ar" },
+  { label: "من نحن", href: "/ar/about-us" },
+  { label: "الرحلات", href: "/ar/journeys" },
+  { label: "الوجهات", href: "/ar/destinations" },
+  { label: "تواصل معنا", href: "/ar/contact" },
+];
+
+function getLanguageLinks(pathname: string) {
+  const isArabic = pathname === "/ar" || pathname.startsWith("/ar/");
+
+  if (isArabic) {
+    const englishPath = pathname.replace(/^\/ar/, "") || "/";
+    return {
+      isArabic: true,
+      englishHref: englishPath,
+      arabicHref: pathname,
+    };
+  }
+
+  return {
+    isArabic: false,
+    englishHref: pathname || "/",
+    arabicHref: pathname === "/" ? "/ar" : `/ar${pathname}`,
+  };
+}
+
 export function Navbar() {
+  const pathname = usePathname();
+  const { isArabic, englishHref, arabicHref } = getLanguageLinks(pathname);
+
   const [megaOpen, setMegaOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const closeMobile = () => setMobileOpen(false);
+  const activeLinks = isArabic ? arabicLinks : mainLinks;
 
   return (
-    <header
-      className="fixed left-0 right-0 top-0 z-50"
-      onMouseLeave={() => setMegaOpen(false)}
-    >
-      <div className="mx-auto flex h-[96px] w-full max-w-[1440px] items-center justify-between px-6 md:px-10">
-        <Link href="/" className="relative h-16 w-[260px] md:h-20 md:w-[330px]">
-          <Image
-            src="/images/visit-indo-travel-logo-transparent.png"
-            alt="Visit Indo Travel"
-            fill
-            priority
-            className="object-contain object-left drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
-          />
-        </Link>
-
-        <nav className="hidden items-center gap-8 rounded-full border border-white/15 bg-black/10 px-7 py-4 backdrop-blur-md lg:flex">
-          <Link
-            href="/"
-            className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white"
-          >
-            Home
-          </Link>
-
-          <Link
-            href="/about-us"
-            className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white"
-          >
-            About Us
-          </Link>
-
-          <button
-            onMouseEnter={() => setMegaOpen(true)}
-            onClick={() => setMegaOpen((value) => !value)}
-            className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white"
-          >
-            Explore
-          </button>
-
-          <Link
-            href="/journeys"
-            className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white"
-          >
-            Journeys
-          </Link>
-
-          <Link
-            href="/contact"
-            className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white"
-          >
-            Contact
-          </Link>
-        </nav>
-
-        <Link
-          href="/contact"
-          className="hidden rounded-full border border-white/35 bg-black/10 px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md transition hover:bg-white hover:text-[#07110e] md:inline-flex"
-        >
-          Enquire Now
-        </Link>
-
-        <Link
-          href="/contact"
-          className="rounded-full border border-white/35 bg-black/10 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md md:hidden"
-        >
-          Enquire
-        </Link>
-      </div>
-
-      <div
-        className={`mx-auto hidden max-w-[1180px] px-6 transition-all duration-300 lg:block ${
-          megaOpen
-            ? "translate-y-0 opacity-100"
-            : "pointer-events-none -translate-y-3 opacity-0"
-        }`}
+    <>
+      <header
+        className="fixed left-0 right-0 top-0 z-[9999]"
+        onMouseLeave={() => setMegaOpen(false)}
       >
-        <div className="grid overflow-hidden rounded-[2rem] border border-white/12 bg-[#050b09]/92 text-white shadow-[0_28px_90px_rgba(0,0,0,.38)] backdrop-blur-2xl lg:grid-cols-[1.1fr_1fr_1fr]">
-          <div className="relative min-h-[320px] overflow-hidden p-8">
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-45"
-              style={{
-                backgroundImage:
-                  "url('https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=1200&q=85')",
-              }}
+        <div className="mx-auto flex h-[86px] w-full max-w-[1440px] items-center justify-between px-4 md:h-[96px] md:px-10">
+          <Link
+            href={isArabic ? "/ar" : "/"}
+            className="relative z-[10000] h-14 w-[210px] md:h-20 md:w-[330px]"
+            onClick={closeMobile}
+          >
+            <Image
+              src="/images/visit-indo-travel-logo-transparent.png"
+              alt="Visit Indo Travel"
+              fill
+              priority
+              className="object-contain object-left drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#050b09] via-[#050b09]/75 to-[#050b09]/20" />
-            <div className="relative z-10">
-              <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
-                Visit Indo Travel
-              </p>
-              <h3 className="font-display text-[46px] leading-[0.9] tracking-[-0.045em]">
-                Explore Indonesia privately.
-              </h3>
-              <p className="mt-6 max-w-sm text-sm leading-7 text-white/62">
-                Discover curated destinations, private journeys, luxury stays,
-                transfers, and cultural experiences arranged with local care.
-              </p>
+          </Link>
+
+          <nav className="hidden items-center gap-8 rounded-full border border-white/15 bg-black/10 px-7 py-4 backdrop-blur-md lg:flex">
+            <Link href={isArabic ? "/ar" : "/"} className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white">
+              {isArabic ? "الرئيسية" : "Home"}
+            </Link>
+
+            <Link href={isArabic ? "/ar/about-us" : "/about-us"} className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white">
+              {isArabic ? "من نحن" : "About Us"}
+            </Link>
+
+            <button
+              type="button"
+              onMouseEnter={() => setMegaOpen(true)}
+              onClick={() => setMegaOpen((value) => !value)}
+              className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white"
+            >
+              {isArabic ? "استكشف" : "Explore"}
+            </button>
+
+            <Link href={isArabic ? "/ar/journeys" : "/journeys"} className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white">
+              {isArabic ? "الرحلات" : "Journeys"}
+            </Link>
+
+            <Link href={isArabic ? "/ar/contact" : "/contact"} className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/78 transition hover:text-white">
+              {isArabic ? "تواصل" : "Contact"}
+            </Link>
+          </nav>
+
+          <div className="hidden items-center gap-3 md:flex">
+            <div className="hidden items-center gap-1 rounded-full border border-white/25 bg-black/20 p-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_14px_40px_rgba(0,0,0,.22)] backdrop-blur-md lg:flex">
               <Link
-                href="/contact"
-                className="mt-8 inline-flex rounded-full border border-white/35 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] transition hover:bg-white hover:text-[#07110e]"
+                href={englishHref}
+                className={`rounded-full px-4 py-2.5 transition ${
+                  !isArabic
+                    ? "bg-white !text-[#07110e] shadow-[0_8px_24px_rgba(255,255,255,.18)]"
+                    : "!text-white/65 hover:!text-white"
+                }`}
               >
-                Start Planning
+                EN
+              </Link>
+              <Link
+                href={arabicHref}
+                className={`rounded-full px-4 py-2.5 transition ${
+                  isArabic
+                    ? "bg-white !text-[#07110e] shadow-[0_8px_24px_rgba(255,255,255,.18)]"
+                    : "!text-white/65 hover:!text-white"
+                }`}
+              >
+                AR
               </Link>
             </div>
+
+            <Link
+              href={isArabic ? "/ar/contact" : "/contact"}
+              className="rounded-full border border-white/35 bg-black/10 px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md transition hover:bg-white hover:text-[#07110e]"
+            >
+              {isArabic ? "استفسر الآن" : "Enquire Now"}
+            </Link>
           </div>
 
-          <div className="border-l border-white/10 p-8">
-            <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
-              Destinations
-            </p>
-            <div className="grid gap-3">
-              {destinations.map((item) => (
-                <Link
-                  key={item}
-                  href="/destinations"
-                  className="group flex items-center justify-between border-b border-white/8 pb-3 text-sm uppercase tracking-[0.16em] text-white/62 transition hover:text-white"
-                >
-                  {item}
-                  <span className="text-[#d7aa51] opacity-0 transition group-hover:opacity-100">
-                    →
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={() => setMobileOpen((value) => !value)}
+            className="relative z-[10000] flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-black/35 text-white shadow-[0_16px_45px_rgba(0,0,0,.35)] backdrop-blur-md lg:hidden"
+            aria-label="Toggle mobile menu"
+            aria-expanded={mobileOpen}
+          >
+            <span className="flex flex-col gap-1.5">
+              <span
+                className={`block h-px w-5 bg-white transition ${
+                  mobileOpen ? "translate-y-[7px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`block h-px w-5 bg-white transition ${
+                  mobileOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block h-px w-5 bg-white transition ${
+                  mobileOpen ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
+              />
+            </span>
+          </button>
+        </div>
 
-          <div className="border-l border-white/10 p-8">
-            <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
-              Experiences
-            </p>
-            <div className="grid gap-3">
-              {experiences.map((item) => (
+        <div
+          className={`mx-auto hidden max-w-[1180px] px-6 transition-all duration-300 lg:block ${
+            megaOpen
+              ? "translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-3 opacity-0"
+          }`}
+        >
+          <div className="grid overflow-hidden rounded-[2rem] border border-white/12 bg-[#050b09]/92 text-white shadow-[0_28px_90px_rgba(0,0,0,.38)] backdrop-blur-2xl lg:grid-cols-[1.1fr_1fr_1fr]">
+            <div className="relative min-h-[320px] overflow-hidden p-8">
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-45"
+                style={{
+                  backgroundImage:
+                    "url('https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=1200&q=85')",
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050b09] via-[#050b09]/75 to-[#050b09]/20" />
+              <div className="relative z-10">
+                <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
+                  Visit Indo Travel
+                </p>
+                <h3 className="font-display text-[46px] leading-[0.9] tracking-[-0.045em]">
+                  {isArabic ? "اكتشف إندونيسيا برحلة خاصة." : "Explore Indonesia privately."}
+                </h3>
+                <p className="mt-6 max-w-sm text-sm leading-7 text-white/62">
+                  {isArabic
+                    ? "وجهات مختارة، رحلات خاصة، إقامة فاخرة، وانتقالات مريحة بتخطيط محلي."
+                    : "Discover curated destinations, private journeys, luxury stays, transfers, and cultural experiences arranged with local care."}
+                </p>
                 <Link
-                  key={item}
-                  href="/#focus"
-                  className="group flex items-center justify-between border-b border-white/8 pb-3 text-sm uppercase tracking-[0.16em] text-white/62 transition hover:text-white"
+                  href={isArabic ? "/ar/contact" : "/contact"}
+                  className="mt-8 inline-flex rounded-full border border-white/35 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] transition hover:bg-white hover:text-[#07110e]"
                 >
-                  {item}
-                  <span className="text-[#d7aa51] opacity-0 transition group-hover:opacity-100">
-                    →
-                  </span>
+                  {isArabic ? "ابدأ التخطيط" : "Start Planning"}
                 </Link>
-              ))}
+              </div>
             </div>
 
-            <p className="mb-4 mt-8 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
-              Journeys
-            </p>
-            <div className="grid gap-2">
-              {journeys.map((item) => (
-                <Link
-                  key={item}
-                  href="/journeys"
-                  className="text-sm text-white/55 transition hover:text-white"
-                >
-                  {item}
-                </Link>
-              ))}
+            <div className="border-l border-white/10 p-8">
+              <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
+                {isArabic ? "الوجهات" : "Destinations"}
+              </p>
+              <div className="grid gap-3">
+                {destinations.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={isArabic ? "/ar/destinations" : item.href}
+                    className="group flex items-center justify-between border-b border-white/8 pb-3 text-sm uppercase tracking-[0.16em] text-white/62 transition hover:text-white"
+                  >
+                    {item.label}
+                    <span className="text-[#d7aa51] opacity-0 transition group-hover:opacity-100">
+                      →
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="border-l border-white/10 p-8">
+              <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
+                {isArabic ? "الرحلات" : "Journeys"}
+              </p>
+              <div className="grid gap-3">
+                {journeys.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={isArabic ? "/ar/journeys" : item.href}
+                    className="group flex items-center justify-between border-b border-white/8 pb-3 text-sm uppercase tracking-[0.16em] text-white/62 transition hover:text-white"
+                  >
+                    {item.label}
+                    <span className="text-[#d7aa51] opacity-0 transition group-hover:opacity-100">
+                      →
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {mobileOpen && (
+        <div className="fixed inset-0 z-[9998] bg-[#050b09] text-white lg:hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-20"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1400&q=85')",
+            }}
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,11,9,.94),rgba(5,11,9,.98))]" />
+
+          <div className="relative z-10 flex h-full flex-col px-5 pb-7 pt-[108px]">
+            <div className="mb-5 grid grid-cols-2 gap-2 rounded-2xl border border-white/10 bg-white/[0.055] p-2">
+              <Link
+                href={englishHref}
+                onClick={closeMobile}
+                className={`rounded-xl px-4 py-3 text-center text-[12px] font-bold uppercase tracking-[0.16em] ${
+                  !isArabic ? "bg-white !text-[#07110e]" : "!text-white/72"
+                }`}
+              >
+                English
+              </Link>
+              <Link
+                href={arabicHref}
+                onClick={closeMobile}
+                className={`rounded-xl px-4 py-3 text-center text-[12px] font-bold uppercase tracking-[0.16em] ${
+                  isArabic ? "bg-white !text-[#07110e]" : "!text-white/72"
+                }`}
+              >
+                العربية
+              </Link>
+            </div>
+
+            <nav className="grid gap-3">
+              {activeLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMobile}
+                  className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.065] px-5 py-5 text-[14px] font-bold uppercase tracking-[0.18em] text-white"
+                >
+                  {item.label}
+                  <span className="text-[#d7aa51]">→</span>
+                </Link>
+              ))}
+            </nav>
+
+            <div className="mt-5 rounded-3xl border border-white/10 bg-white/[0.055] p-5">
+              <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.26em] text-[#d7aa51]">
+                {isArabic ? "رحلات مميزة" : "Featured Journeys"}
+              </p>
+              <div className="grid gap-3">
+                {journeys.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={isArabic ? "/ar/journeys" : item.href}
+                    onClick={closeMobile}
+                    className="flex items-center justify-between border-b border-white/10 pb-3 text-sm leading-6 text-white/68 last:border-b-0 last:pb-0"
+                  >
+                    {item.label}
+                    <span className="text-[#d7aa51]">→</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-auto grid gap-3 pt-5">
+              <Link
+                href={isArabic ? "/ar/contact" : "/contact"}
+                onClick={closeMobile}
+                className="inline-flex justify-center rounded-full bg-white px-8 py-4 text-[12px] font-bold uppercase tracking-[0.18em] !text-[#07110e]"
+              >
+                {isArabic ? "استفسر الآن" : "Enquire Now"}
+              </Link>
+              <a
+                href="https://wa.me/6281220455846"
+                className="inline-flex justify-center rounded-full border border-white/20 bg-white/[0.055] px-8 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+              >
+                WhatsApp Us
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

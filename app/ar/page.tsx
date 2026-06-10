@@ -1,0 +1,309 @@
+import Link from "next/link";
+import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
+import { HeroCleanSliderArabic } from "@/components/sections/HeroCleanSliderArabic";
+import { travelPackages } from "@/data/packages";
+import { destinations } from "@/data/destinations";
+
+const packageArabicTitles: Record<string, string> = {
+  "java-discovery-journey": "رحلة اكتشاف جاوة",
+  "bali-luxury-escape": "رحلة فاخرة في بالي",
+  "komodo-eastern-islands": "كومودو والجزر الشرقية",
+  "romantic-indonesia-honeymoon": "رحلة شهر عسل في إندونيسيا",
+};
+
+const destinationArabicTitles: Record<string, string> = {
+  "bali-eastern-islands": "بالي والجزر الشرقية",
+  java: "جاوة",
+  sumatra: "سومطرة",
+  kalimantan: "كاليمانتان",
+  sulawesi: "سولاويسي",
+  maluku: "مالوكو",
+  papua: "بابوا",
+};
+
+const focusItems = [
+  {
+    title: "إقامات فاخرة مختارة",
+    text: "نساعدك في اختيار الفنادق، المنتجعات، أو الفلل المناسبة حسب أسلوب الرحلة والميزانية.",
+  },
+  {
+    title: "سائق خاص وتنقل مريح",
+    text: "تنقلات خاصة من المطار وبين المدن مع ترتيب مناسب لوقت الرحلة.",
+  },
+  {
+    title: "تجارب محلية وثقافية",
+    text: "برامج تجمع بين الطبيعة، الثقافة، الجزر، والمواقع المميزة في إندونيسيا.",
+  },
+];
+
+const whyItems = [
+  "برنامج خاص حسب احتياجك",
+  "تنظيم مريح للمسافرين العرب",
+  "تواصل مباشر عبر واتساب",
+  "مرونة في الوجهات والمدة",
+];
+
+export default function ArabicHomePage() {
+  return (
+    <>
+      <Navbar />
+
+      <main dir="rtl" className="bg-[#07110e] text-white">
+        <HeroCleanSliderArabic />
+
+        <section className="bg-[#f7f0e5] py-24 text-[#111d18] md:py-32">
+          <div className="mx-auto grid max-w-[1240px] gap-12 px-6 text-right md:px-10 lg:grid-cols-[.9fr_1.1fr]">
+            <div>
+              <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#a8782d]">
+                Discover The Story
+              </p>
+              <h2 className="mobile-section-title font-display text-[46px] leading-[1.05] tracking-[-0.04em] md:text-[74px]">
+                طريقة أكثر راحة لاكتشاف إندونيسيا.
+              </h2>
+            </div>
+
+            <div className="space-y-5 text-[17px] leading-9 text-[#111d18]/68">
+              <p>
+                نقدم رحلات خاصة للمسافرين الذين يبحثون عن الراحة، الخصوصية،
+                والتنظيم السلس. نبدأ بفهم أسلوب سفرك، عدد المسافرين، مدة
+                الرحلة، والوجهات التي ترغب في زيارتها.
+              </p>
+              <p>
+                بعد ذلك نقوم بتجهيز مسار مناسب يشمل الإقامة، التنقلات، السائق
+                الخاص، الأنشطة، والتجارب المحلية المختارة.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="focus" className="py-24 md:py-32">
+          <div className="mx-auto max-w-[1240px] px-6 text-right md:px-10">
+            <div className="mb-12 max-w-3xl">
+              <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
+                Our Focus
+              </p>
+              <h2 className="mobile-section-title font-display text-[46px] leading-[1.05] tracking-[-0.04em] md:text-[72px]">
+                كل تفاصيل الرحلة يتم ترتيبها بعناية.
+              </h2>
+            </div>
+
+            <div className="mobile-two-grid overflow-hidden border border-white/10 bg-white/10 md:grid md:grid-cols-3 md:gap-px">
+              {focusItems.map((item) => (
+                <article key={item.title} className="bg-[#07110e] p-8">
+                  <p className="mb-8 text-2xl text-[#d7aa51]">✦</p>
+                  <h3 className="font-display text-[30px] leading-[1.05]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-5 text-[15px] leading-8 text-white/62">
+                    {item.text}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#f7f0e5] py-24 text-[#111d18] md:py-32">
+          <div className="mx-auto grid max-w-[1240px] gap-12 px-6 text-right md:px-10 lg:grid-cols-[.86fr_1.14fr]">
+            <div>
+              <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#a8782d]">
+                Why Travel With Us
+              </p>
+              <h2 className="mobile-section-title font-display text-[46px] leading-[1.05] tracking-[-0.04em] md:text-[72px]">
+                رحلات خاصة مصممة لتكون مريحة وواضحة.
+              </h2>
+            </div>
+
+            <div className="mobile-two-grid overflow-hidden border border-black/10 bg-black/10 md:grid md:grid-cols-2 md:gap-px">
+              {whyItems.map((item) => (
+                <div key={item} className="bg-white p-7">
+                  <p className="mb-8 text-2xl text-[#a8782d]">✦</p>
+                  <p className="font-display text-[30px] leading-[1.1]">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="packages" className="bg-[#f7f0e5] py-24 text-[#111d18] md:py-32">
+          <div className="mx-auto max-w-[1240px] px-6 text-right md:px-10">
+            <div className="mb-10 grid gap-6 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
+              <div>
+                <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#a8782d]">
+                  Pre-Designed Journeys
+                </p>
+                <h2 className="mobile-section-title font-display text-[46px] leading-[1.05] tracking-[-0.04em] md:text-[76px]">
+                  باقات سفر خاصة قابلة للتخصيص.
+                </h2>
+              </div>
+
+              <p className="text-[17px] leading-9 text-[#111d18]/65">
+                اختر إحدى الباقات كنقطة بداية، ثم نقوم بتعديل المسار، مدة
+                الرحلة، مستوى الإقامة، والأنشطة حسب احتياجك.
+              </p>
+            </div>
+
+            <div className="mobile-scroll md:grid md:grid-cols-2 md:gap-6">
+              {travelPackages.map((item) => (
+                <article
+                  key={item.slug}
+                  className="mobile-snap-card overflow-hidden border border-black/10 bg-white shadow-[0_24px_80px_rgba(0,0,0,.08)]"
+                >
+                  <div className="relative h-[250px] overflow-hidden md:h-[320px]">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url('${item.image}')` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-transparent" />
+                    <div className="absolute bottom-6 left-6 right-6 text-right">
+                      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#f5dc92]">
+                        {item.duration}
+                      </p>
+                      <h3 className="font-display text-[36px] leading-[1.05] text-white md:text-[44px]">
+                        {packageArabicTitles[item.slug] || item.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="p-5 md:p-8">
+                    <p className="text-[15px] leading-8 text-[#111d18]/68">
+                      برنامج خاص قابل للتعديل حسب عدد المسافرين، مدة الرحلة،
+                      مستوى الإقامة، والوجهات المطلوبة.
+                    </p>
+
+                    <div className="mt-7 flex flex-wrap justify-end gap-3">
+                      <Link
+                        href="/ar/contact"
+                        className="rounded-full bg-[#07110e] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-white"
+                      >
+                        استفسر الآن
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <p className="mt-4 text-center text-[11px] uppercase tracking-[0.2em] text-[#111d18]/42 md:hidden">
+              اسحب لمشاهدة المزيد
+            </p>
+          </div>
+        </section>
+
+        <section className="bg-[#07110e] py-24 text-white md:py-32">
+          <div className="mx-auto grid max-w-[1240px] gap-10 px-6 text-right md:px-10 lg:grid-cols-[0.88fr_1.12fr]">
+            <div>
+              <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
+                Sample Itinerary
+              </p>
+              <h2 className="mobile-section-title font-display text-[46px] leading-[1.05] tracking-[-0.04em] md:text-[76px]">
+                مثال بسيط لكيف يمكن أن تسير الرحلة.
+              </h2>
+              <p className="mt-7 text-[17px] leading-9 text-white/62">
+                يمكن تعديل كل برنامج حسب وقت الوصول، مستوى الإقامة، سرعة
+                الرحلة، والوجهات المطلوبة.
+              </p>
+            </div>
+
+            <div className="mobile-scroll md:grid md:gap-5">
+              {travelPackages[0].itineraryPreview.map((item, index) => (
+                <article
+                  key={item.day}
+                  className="mobile-snap-card border border-white/10 bg-white/[0.055] p-5 md:p-7"
+                >
+                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.26em] text-[#d7aa51]">
+                    اليوم {index + 1}
+                  </p>
+                  <h3 className="font-display text-[32px] leading-[1.05]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-5 text-[15px] leading-8 text-white/62">
+                    يمكن تخصيص تفاصيل هذا اليوم حسب احتياج المسافرين والوجهات
+                    المطلوبة.
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="destinations" className="relative overflow-hidden bg-[#07110e] py-24 text-white md:py-32">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-55"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=2400&q=90')",
+            }}
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,17,14,.36),rgba(7,17,14,.78),rgba(7,17,14,.95))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(7,17,14,.76),rgba(7,17,14,.36),rgba(7,17,14,.88))]" />
+
+          <div className="relative z-10 mx-auto grid max-w-[1240px] gap-10 px-6 text-right md:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
+                Mastering The Destination
+              </p>
+              <h2 className="mobile-section-title font-display text-[46px] leading-[1.05] tracking-[-0.04em] md:text-[72px]">
+                اكتشف إندونيسيا حسب المنطقة.
+              </h2>
+              <p className="mt-7 max-w-xl text-[17px] leading-9 text-white/68">
+                كل منطقة في إندونيسيا تقدم تجربة مختلفة من الثقافة، الطبيعة،
+                الجزر، والرحلات الخاصة.
+              </p>
+            </div>
+
+            <div className="mobile-compact-grid mobile-hide-extra md:grid md:gap-3 sm:md:grid-cols-2">
+              {destinations.map((item, index) => (
+                <Link
+                  key={item.slug}
+                  href="/ar/destinations"
+                  className={`mobile-compact-card group border px-6 py-6 text-[13px] font-semibold uppercase tracking-[0.16em] transition duration-300 hover:-translate-y-1 hover:border-[#d7aa51] hover:bg-white/10 hover:text-white ${
+                    index === 0
+                      ? "border-[#d7aa51] bg-white/5 text-white"
+                      : "border-white/14 bg-black/10 text-white/68"
+                  }`}
+                >
+                  <span>{destinationArabicTitles[item.slug] || item.title}</span>
+                  <span className="mt-4 block h-[2px] w-8 bg-white/24 transition-all duration-300 group-hover:w-20 group-hover:bg-[#d7aa51]" />
+                </Link>
+              ))}
+            </div>
+
+            <Link
+              href="/ar/destinations"
+              className="inline-flex justify-center rounded-full border border-white/30 bg-white/5 px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md md:hidden"
+            >
+              عرض كل الوجهات
+            </Link>
+          </div>
+        </section>
+
+        <section className="bg-[#f7f0e5] py-24 text-[#111d18] md:py-32">
+          <div className="mx-auto max-w-[980px] px-6 text-center md:px-10">
+            <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#a8782d]">
+              Start Planning
+            </p>
+            <h2 className="mobile-section-title font-display text-[48px] leading-[1.05] tracking-[-0.04em] md:text-[78px]">
+              أخبرنا عن رحلتك القادمة.
+            </h2>
+            <p className="mx-auto mt-7 max-w-2xl text-[17px] leading-9 text-[#111d18]/66">
+              شاركنا تاريخ السفر، عدد المسافرين، الوجهات المطلوبة، ومستوى
+              الإقامة المفضل، وسنساعدك في تجهيز تصور مناسب.
+            </p>
+            <div className="mt-9">
+              <Link
+                href="/ar/contact"
+                className="inline-flex rounded-full bg-[#07110e] px-8 py-4 text-[12px] font-bold uppercase tracking-[0.18em] text-white"
+              >
+                تواصل معنا
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
+}

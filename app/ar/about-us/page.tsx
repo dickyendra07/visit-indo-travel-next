@@ -1,0 +1,106 @@
+import Link from "next/link";
+import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
+
+const values = [
+  "رحلات خاصة مصممة حسب أسلوب السفر",
+  "تنظيم مريح مع سائق خاص وانتقالات خاصة",
+  "تجارب ثقافية وطبيعية مختارة بعناية",
+  "مرونة في البرنامج حسب مدة الرحلة والميزانية",
+];
+
+export default function ArabicAboutPage() {
+  return (
+    <>
+      <Navbar />
+
+      <main dir="rtl" className="bg-[#07110e] text-white">
+        <section className="relative min-h-[680px] overflow-hidden pt-32">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=2400&q=90')",
+            }}
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,.48),rgba(0,0,0,.82))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(7,17,14,.12),rgba(7,17,14,.92))]" />
+
+          <div className="relative z-10 mx-auto flex min-h-[680px] max-w-[1240px] items-center px-6 text-right md:px-10">
+            <div className="mr-auto max-w-4xl">
+              <p className="mb-6 text-[12px] font-semibold uppercase tracking-[0.34em] text-[#d7aa51]">
+                About Visit Indo Travel
+              </p>
+              <h1 className="mobile-hero-title font-display text-[58px] leading-[1.05] tracking-[-0.045em] md:text-[92px]">
+                نساعدك على اكتشاف إندونيسيا بطريقة خاصة ومريحة.
+              </h1>
+              <p className="mt-8 max-w-2xl text-[18px] leading-9 text-white/72">
+                نقوم بتصميم رحلات خاصة في إندونيسيا للمسافرين الذين يبحثون عن
+                الراحة، الخصوصية، التجارب المختارة، والتنظيم السلس من الوصول
+                حتى العودة.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#f7f0e5] py-24 text-[#111d18] md:py-32">
+          <div className="mx-auto grid max-w-[1240px] gap-12 px-6 text-right md:px-10 lg:grid-cols-[.9fr_1.1fr]">
+            <div>
+              <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#a8782d]">
+                Our Story
+              </p>
+              <h2 className="mobile-section-title font-display text-[46px] leading-[1.05] tracking-[-0.04em] md:text-[72px]">
+                رحلات إندونيسيا بتفاصيل شخصية.
+              </h2>
+            </div>
+
+            <div className="space-y-5 text-[17px] leading-9 text-[#111d18]/68">
+              <p>
+                Visit Indo Travel تقدم تجربة سفر أكثر خصوصية في إندونيسيا،
+                بعيداً عن البرامج العامة والمزدحمة. نبدأ بفهم أسلوب سفرك،
+                عدد المسافرين، مدة الرحلة، ومستوى الراحة المطلوب.
+              </p>
+              <p>
+                بعد ذلك نقترح مساراً مناسباً يشمل الوجهات، الإقامة، السائق
+                الخاص، الأنشطة، والتجارب التي تناسب المجموعة.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-24 md:py-32">
+          <div className="mx-auto max-w-[1240px] px-6 text-right md:px-10">
+            <div className="mb-12 max-w-3xl">
+              <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
+                Why Travel With Us
+              </p>
+              <h2 className="mobile-section-title font-display text-[46px] leading-[1.05] tracking-[-0.04em] md:text-[72px]">
+                لماذا يختار المسافرون رحلاتنا الخاصة؟
+              </h2>
+            </div>
+
+            <div className="mobile-two-grid overflow-hidden border border-white/10 bg-white/10 md:grid md:grid-cols-4 md:gap-px">
+              {values.map((item) => (
+                <article key={item} className="bg-[#07110e] p-8">
+                  <p className="mb-8 text-2xl text-[#d7aa51]">✦</p>
+                  <p className="text-[17px] leading-8 text-white/72">{item}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-10">
+              <Link
+                href="/ar/contact"
+                className="inline-flex rounded-full bg-white px-8 py-4 text-[12px] font-bold uppercase tracking-[0.18em] !text-[#07110e]"
+              >
+                ابدأ التخطيط
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
+}

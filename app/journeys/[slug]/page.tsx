@@ -125,7 +125,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
               </h2>
             </div>
 
-            <div className="grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-2">
+            <div className="detail-compact-grid overflow-hidden border border-white/10 bg-white/10 md:grid md:grid-cols-2 md:gap-px">
               {item.highlights.map((highlight) => (
                 <div key={highlight} className="bg-[#07110e] p-8">
                   <p className="mb-10 text-2xl text-[#d7aa51]">✦</p>
@@ -154,11 +154,11 @@ export default async function JourneyDetailPage({ params }: PageProps) {
               </p>
             </div>
 
-            <div className="grid gap-5">
+            <div className="detail-mobile-scroll md:grid md:gap-5">
               {item.itineraryPreview.map((day, index) => (
                 <article
                   key={day.day}
-                  className="border border-black/10 bg-white p-7 shadow-[0_18px_70px_rgba(0,0,0,.06)]"
+                  className="detail-mobile-card border border-black/10 bg-white p-5 shadow-[0_18px_70px_rgba(0,0,0,.06)] md:p-7"
                 >
                   <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.26em] text-[#a8782d]">
                     {day.day}

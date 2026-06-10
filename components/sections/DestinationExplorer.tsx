@@ -24,26 +24,26 @@ export function DestinationExplorer() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,17,14,.95),rgba(7,17,14,.78),rgba(7,17,14,.36))]" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(7,17,14,.76),rgba(7,17,14,.36),rgba(7,17,14,.88))]" />
 
-      <div className="relative z-10 mx-auto grid max-w-[1240px] gap-12 px-6 md:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div className="relative z-10 mx-auto grid max-w-[1240px] gap-10 px-6 md:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
-          <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51]">
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d7aa51] md:mb-5 md:text-[12px]">
             Mastering The Destination
           </p>
-          <h2 className="font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
+          <h2 className="font-display text-[42px] leading-[0.95] tracking-[-0.045em] md:text-[72px]">
             Explore Indonesia by region.
           </h2>
-          <p className="mt-7 max-w-xl text-[17px] leading-9 text-white/68">
+          <p className="mt-6 max-w-xl text-[15px] leading-8 text-white/68 md:mt-7 md:text-[17px] md:leading-9">
             With thousands of islands and diverse cultures, Indonesia is best
             experienced through carefully designed regions and private routes.
           </p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="mobile-compact-grid mobile-hide-extra md:grid md:gap-3 sm:md:grid-cols-2">
           {regions.map((region, index) => (
             <a
               key={region}
-              href="/contact"
-              className={`group border px-6 py-6 text-[13px] font-semibold uppercase tracking-[0.2em] transition duration-300 hover:-translate-y-1 hover:border-[#d7aa51] hover:bg-white/10 hover:text-white ${
+              href="/destinations"
+              className={`mobile-compact-card group border px-6 py-6 text-[11px] font-semibold uppercase tracking-[0.16em] transition duration-300 hover:-translate-y-1 hover:border-[#d7aa51] hover:bg-white/10 hover:text-white md:text-[13px] md:tracking-[0.2em] ${
                 index === 0
                   ? "border-[#d7aa51] bg-white/5 text-white"
                   : "border-white/14 bg-black/10 text-white/68"
@@ -54,6 +54,13 @@ export function DestinationExplorer() {
             </a>
           ))}
         </div>
+
+        <a
+          href="/destinations"
+          className="inline-flex justify-center rounded-full border border-white/30 bg-white/5 px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md md:hidden"
+        >
+          View All Destinations
+        </a>
       </div>
     </section>
   );
