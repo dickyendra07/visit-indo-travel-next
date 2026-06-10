@@ -1,0 +1,188 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+import { Button } from "@/components/ui/Button";
+
+const slides = [
+  {
+    title: "Private Indonesia Journeys, Beyond Ordinary Tourism.",
+    eyebrow: "Premium Private Indonesia Tours",
+    subtitle:
+      "Curated private journeys with personal drivers, handpicked stays, halal-friendly options, family travel support, and flexible WhatsApp planning.",
+    destination: "Labuan Bajo",
+    tag: "Island Escape",
+    image:
+      "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    title: "Cultural Routes, Designed With Local Expertise.",
+    eyebrow: "Heritage & Cultural Escapes",
+    subtitle:
+      "Explore Borobudur, Yogyakarta, local villages, royal heritage, and authentic culinary stops with a fully private travel flow.",
+    destination: "Borobudur",
+    tag: "Cultural Heritage",
+    image:
+      "https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    title: "Volcano Sunrise Trips With Comfort and Care.",
+    eyebrow: "Java Volcano Experiences",
+    subtitle:
+      "Experience Bromo, Ijen, and Java’s cinematic landscapes with private transport, local timing, and smooth travel assistance.",
+    destination: "Bromo",
+    tag: "Volcano Sunrise",
+    image:
+      "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=2200&q=85",
+  },
+  {
+    title: "Premium Stays and Private Travel, Made Effortless.",
+    eyebrow: "Luxury Stays & Private Transfers",
+    subtitle:
+      "From boutique villas to comfortable transfers, we help arrange a journey that fits your family, pace, and travel style.",
+    destination: "Luxury Stays",
+    tag: "Curated Comfort",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=85",
+  },
+];
+
+export function HeroSlider() {
+  const [active, setActive] = useState(0);
+
+  const activeSlide = slides[active];
+
+  const nextSlide = () => {
+    setActive((current) => (current + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setActive((current) => (current - 1 + slides.length) % slides.length);
+  };
+
+  useEffect(() => {
+    const timer = window.setInterval(nextSlide, 5200);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const progressWidth = useMemo(
+    () => `${((active + 1) / slides.length) * 100}%`,
+    [active]
+  );
+
+  return (
+    <section className="relative min-h-screen overflow-hidden bg-[#06110d]">
+      {slides.map((slide, index) => (
+        <div
+          key={slide.destination}
+          className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ${
+            index === active ? "scale-100 opacity-100" : "scale-105 opacity-0"
+          }`}
+          style={{ backgroundImage: `url('${slide.image}')` }}
+        />
+      ))}
+
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,8,7,.94),rgba(6,17,13,.68),rgba(6,17,13,.18)),radial-gradient(circle_at_70%_25%,rgba(245,220,146,.18),transparent_28%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(6,17,13,.12)_0%,rgba(6,17,13,.18)_48%,#06110d_100%)]" />
+
+      <div className="container-page relative z-10 grid min-h-screen items-center gap-10 pt-32 lg:grid-cols-[1fr_.86fr]">
+        <div className="max-w-3xl pb-12">
+          <div className="mb-6 inline-flex rounded-full border border-[#f5dc92]/25 bg-white/10 px-4 py-3 text-xs font-black uppercase tracking-[0.22em] text-[#f5dc92] backdrop-blur-xl">
+            Private Driver • Custom Itinerary • Family-Friendly
+          </div>
+
+          <p className="mb-5 text-xs font-black uppercase tracking-[0.34em] text-[#f5dc92]">
+            {activeSlide.eyebrow}
+          </p>
+
+          <h1 className="font-display text-balance max-w-4xl text-5xl leading-[0.86] tracking-[-0.06em] text-white drop-shadow-2xl md:text-7xl lg:text-[96px]">
+            {activeSlide.title}
+          </h1>
+
+          <p className="mt-7 max-w-2xl text-base leading-8 text-white/76 md:text-lg">
+            {activeSlide.subtitle}
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button href="#journeys">Explore Private Journeys</Button>
+            <Button href="#contact" variant="secondary">
+              Request Custom Itinerary
+            </Button>
+          </div>
+
+          <div className="mt-10 grid max-w-2xl grid-cols-2 gap-3 md:grid-cols-4">
+            {["Private Tours", "Halal-Friendly", "Family Trips", "Local Support"].map(
+              (item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-center text-xs font-black text-white/78 backdrop-blur-xl"
+                >
+                  {item}
+                </div>
+              )
+            )}
+          </div>
+        </div>
+
+        <div className="hidden self-end pb-24 lg:block">
+          <div className="ml-auto grid max-w-xl grid-cols-2 gap-4">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.destination}
+                onClick={() => setActive(index)}
+                className={`group relative h-56 overflow-hidden rounded-[2rem] border text-left transition duration-500 ${
+                  index === active
+                    ? "-translate-y-4 border-[#f5dc92]/80"
+                    : "border-white/18 hover:-translate-y-2 hover:border-white/45"
+                }`}
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: `url('${slide.image}')` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-[#f5dc92]">
+                    {slide.tag}
+                  </p>
+                  <h3 className="font-display text-3xl leading-none text-white">
+                    {slide.destination}
+                  </h3>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-7 left-1/2 z-20 flex w-[min(1180px,calc(100%-40px))] -translate-x-1/2 items-center justify-between gap-5">
+        <div className="hidden items-center gap-3 text-sm font-black text-white/70 md:flex">
+          <span>{String(active + 1).padStart(2, "0")}</span>
+          <div className="h-[3px] w-44 overflow-hidden rounded-full bg-white/18">
+            <div
+              className="h-full rounded-full bg-white transition-all duration-700"
+              style={{ width: progressWidth }}
+            />
+          </div>
+          <span>{String(slides.length).padStart(2, "0")}</span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={prevSlide}
+            className="grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-white/10 text-2xl text-white backdrop-blur-xl transition hover:bg-white/20"
+            aria-label="Previous slide"
+          >
+            ‹
+          </button>
+          <button
+            onClick={nextSlide}
+            className="grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-white/10 text-2xl text-white backdrop-blur-xl transition hover:bg-white/20"
+            aria-label="Next slide"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}

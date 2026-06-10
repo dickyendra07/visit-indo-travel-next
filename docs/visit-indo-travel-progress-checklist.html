@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visit Indo Travel — Full Development Progress Checklist</title>
+  <style>
+    :root {
+      --bg:#07110e; --panel:#0d1b15; --panel2:#10251c; --cream:#f7f0e5;
+      --gold:#d7aa51; --gold2:#f5dc92; --text:#fff; --muted:rgba(255,255,255,.64);
+      --line:rgba(255,255,255,.12); --green:#25d366; --orange:#ffb84d;
+      --red:#ff6b6b; --blue:#69a7ff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+    body{min-height:100vh;padding:40px 20px;background:radial-gradient(circle at top right,rgba(215,168,81,.16),transparent 34%),linear-gradient(135deg,#050b09,var(--bg));color:var(--text)}
+    .wrap{max-width:1180px;margin:0 auto}
+    .hero{position:relative;overflow:hidden;padding:36px;border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.055);backdrop-filter:blur(18px);margin-bottom:24px}
+    .hero:after{content:"";position:absolute;right:-120px;top:-120px;width:320px;height:320px;border-radius:50%;background:rgba(215,168,81,.16);filter:blur(42px)}
+    .eyebrow{color:var(--gold2);text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:900;margin-bottom:14px}
+    h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(36px,6vw,72px);line-height:.95;letter-spacing:-2px;max-width:920px;margin-bottom:18px}
+    .hero p{color:var(--muted);line-height:1.8;max-width:840px;font-size:16px}
+    .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+    .metric{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:24px;padding:22px}
+    .metric strong{display:block;font-size:28px;color:var(--gold2);margin-bottom:6px}
+    .metric span{color:var(--muted);font-size:13px;line-height:1.5}
+    .progress-card{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:28px;padding:24px;margin-bottom:24px}
+    .progress-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+    .progress-head h2{font-size:18px}.progress-percent{color:var(--gold2);font-weight:900}
+    .bar{height:12px;background:rgba(255,255,255,.09);border-radius:999px;overflow:hidden}
+    .bar span{display:block;height:100%;width:36%;background:linear-gradient(90deg,var(--gold2),var(--gold));border-radius:999px}
+    .batch{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:28px;overflow:hidden;margin-bottom:20px}
+    .batch-header{padding:22px 24px;background:rgba(255,255,255,.045);border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+    .batch-header h3{font-family:Georgia,'Times New Roman',serif;font-size:26px;line-height:1;margin-bottom:8px}
+    .batch-header p{color:var(--muted);line-height:1.6;font-size:14px}
+    .tag{display:inline-flex;white-space:nowrap;border-radius:999px;padding:8px 12px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:1px}
+    .done{background:rgba(37,211,102,.16);color:#71f1a1}.progress{background:rgba(255,184,77,.16);color:#ffd28b}
+    .next{background:rgba(105,167,255,.16);color:#9ec6ff}.pending{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+    .critical{background:rgba(255,107,107,.16);color:#ff9a9a}
+    .items{display:grid;gap:1px;background:rgba(255,255,255,.06)}
+    .item{background:#08130f;padding:16px 20px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start}
+    .item input{margin-top:4px;width:18px;height:18px;accent-color:var(--gold)}
+    .item label{line-height:1.5}.item label strong{display:block;color:#fff;margin-bottom:4px;font-size:15px}.item label span{color:var(--muted);font-size:13px;display:block}
+    .priority{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1px;padding:7px 9px;border-radius:999px;white-space:nowrap}
+    .p-high{background:rgba(255,107,107,.14);color:#ff9a9a}.p-med{background:rgba(255,184,77,.14);color:#ffd28b}.p-low{background:rgba(255,255,255,.09);color:rgba(255,255,255,.65)}
+    .notes{background:rgba(215,168,81,.08);border:1px solid rgba(215,168,81,.22);border-radius:28px;padding:24px;margin-top:26px}
+    .notes h3{color:var(--gold2);margin-bottom:14px;font-size:18px}.notes ul{padding-left:20px;color:var(--muted);line-height:1.8}
+    @media(max-width:900px){body{padding:24px 14px}.hero{padding:24px;border-radius:26px}.summary{grid-template-columns:repeat(2,1fr)}.batch-header{flex-direction:column}.item{grid-template-columns:auto 1fr}.priority{grid-column:2;width:fit-content}}
+    @media(max-width:560px){.summary{grid-template-columns:1fr}.progress-head{flex-direction:column;align-items:flex-start}.batch-header h3{font-size:23px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Visit Indo Travel / Next.js Company Profile</div>
+      <h1>Full Development Progress Checklist</h1>
+      <p>
+        Checklist ini adalah versi realistis untuk transformasi besar Visit Indo Travel dari landing page menjadi luxury travel company profile website.
+        Fokus utama saat ini adalah menyelesaikan struktur konten, package, itinerary, pages, responsive UI, dan baru setelah itu backend/CMS.
+      </p>
+    </section>
+
+    <section class="summary">
+      <div class="metric"><strong>36%</strong><span>Estimated frontend progress saat ini</span></div>
+      <div class="metric"><strong>3</strong><span>Pages started: Home, About Us, Contact</span></div>
+      <div class="metric"><strong>High</strong><span>Priority: Packages + Itinerary sections</span></div>
+      <div class="metric"><strong>Later</strong><span>NestJS backend and CMS after frontend approval</span></div>
+    </section>
+
+    <section class="progress-card">
+      <div class="progress-head">
+        <h2>Overall Progress</h2>
+        <div class="progress-percent">36%</div>
+      </div>
+      <div class="bar"><span></span></div>
+    </section>
+
+    <section class="batch">
+      <div class="batch-header">
+        <div>
+          <h3>Batch A — Project Foundation</h3>
+          <p>Base setup, folder structure, theme direction, and initial frontend foundation.</p>
+        </div>
+        <span class="tag done">Mostly Done</span>
+      </div>
+      <div class="items">
+        <div class="item"><input type="checkbox" checked><label><strong>Create Next.js project</strong><span>Project created at ~/Herd/visit-indo-travel-next using Next.js, TypeScript, Tailwind, App Router.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox" checked><label><strong>Confirm active project structure</strong><span>Using root app/, components/, data/, public/ structure.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox" checked><label><strong>Luxury visual direction</strong><span>Clean luxury travel direction selected: deep green, ivory, gold, editorial typography, large imagery.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Clean unused files/folders</strong><span>Remove unused src/ folder or duplicate experimental files after final QA.</span></label><span class="priority p-low">Low</span></div>
+      </div>
+    </section>
+
+    <section class="batch">
+      <div class="batch-header">
+        <div>
+          <h3>Batch B — Homepage Core Structure</h3>
+          <p>Homepage should become the strongest conversion page before branching into detail pages.</p>
+        </div>
+        <span class="tag progress">In Progress</span>
+      </div>
+      <div class="items">
+        <div class="item"><input type="checkbox" checked><label><strong>Hero slider</strong><span>Clean luxury hero image slider created with CTA and visual direction.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox" checked><label><strong>Transparent luxury header</strong><span>Header with transparent logo and elegant navigation created.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox" checked><label><strong>Discover The Story section</strong><span>Editorial company intro section created.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox" checked><label><strong>Our Focus section</strong><span>Luxury Stays, Private Transfers, Curated Experiences section created.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox" checked><label><strong>Why Travel With Us section</strong><span>Trust-building section created.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox" checked><label><strong>How It Works section</strong><span>Consultation-to-travel process created.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Add Packages / Pre-Designed Journeys section</strong><span>Homepage needs a stronger package section with package types, duration, target traveler, CTA, and teaser pricing if needed.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Add Itinerary Preview section</strong><span>Homepage should show sample day-by-day itinerary preview before going to detail pages.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Add Accommodation / Luxury Stays preview</strong><span>Show curated stay value proposition and example accommodation style.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Add Private Transfers preview</strong><span>Explain airport pickup, private car, personal driver, intercity transfers, and comfort options.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Add Testimonials / Trust section</strong><span>Use placeholder testimonials or trust copy to increase credibility for Saudi/US leads.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Homepage final spacing polish</strong><span>Review all hierarchy, spacing, CTA visibility, and mobile layout.</span></label><span class="priority p-high">High</span></div>
+      </div>
+    </section>
+
+    <section class="batch">
+      <div class="batch-header">
+        <div>
+          <h3>Batch C — Packages & Itinerary System</h3>
+          <p>This is the most important missing content layer before detail pages.</p>
+        </div>
+        <span class="tag critical">Missing</span>
+      </div>
+      <div class="items">
+        <div class="item"><input type="checkbox"><label><strong>Define package categories</strong><span>Example: Java Discovery, Bali Luxury Escape, Romantic Honeymoon, Family Indonesia Journey, Komodo & Eastern Islands, Custom Private Trip.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Create package data structure</strong><span>Create data/packages.ts with title, slug, duration, region, short description, highlights, inclusions, exclusions, images, and itinerary.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Create homepage package cards</strong><span>Cards should show package title, duration, region, ideal traveler, short copy, image, and CTA.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Create itinerary teaser component</strong><span>Show 3–5 day preview steps on homepage, not full detailed page yet.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Create package detail page template</strong><span>Dynamic route /journeys/[slug] for package detail with hero, overview, itinerary, inclusions, stays, FAQ, CTA.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Create full itinerary content per package</strong><span>Prepare day-by-day copywriting for each package in English.</span></label><span class="priority p-high">High</span></div>
+      </div>
+    </section>
+
+    <section class="batch">
+      <div class="batch-header">
+        <div>
+          <h3>Batch D — Page Architecture</h3>
+          <p>Several pages are still empty or not yet created. This must be expanded into a proper company profile structure.</p>
+        </div>
+        <span class="tag critical">Many Missing</span>
+      </div>
+      <div class="items">
+        <div class="item"><input type="checkbox" checked><label><strong>/about-us page draft</strong><span>About Us page created but still needs copy and mobile polish.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox" checked><label><strong>/contact page draft</strong><span>Contact page created with enquiry form and company contact info.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>/journeys page</strong><span>Listing page for all pre-designed and custom journeys.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>/journeys/[slug] dynamic detail pages</strong><span>Dedicated page for each package with itinerary and inquiry CTA.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>/destinations page</strong><span>Destination overview: Bali, Java, Sumatra, Kalimantan, Sulawesi, Maluku, Papua.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>/destinations/[slug] detail pages</strong><span>Each destination needs intro, best experiences, sample routes, stay type, and CTA.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>/experiences page</strong><span>Luxury Experiences overview: heritage, volcano, island, culinary, family, honeymoon.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>/luxury-stays page</strong><span>Explain accommodation planning and premium stay curation.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>/private-transfers page</strong><span>Explain airport pickup, driver, car options, and intercity transfer service.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>/blog or /travel-guide page</strong><span>Optional but useful for SEO and Google Ads trust later.</span></label><span class="priority p-low">Low</span></div>
+      </div>
+    </section>
+
+    <section class="batch">
+      <div class="batch-header">
+        <div>
+          <h3>Batch E — Navigation & Mega Menu</h3>
+          <p>Navigation must support the bigger site architecture, not just homepage anchors.</p>
+        </div>
+        <span class="tag progress">Needs Revision</span>
+      </div>
+      <div class="items">
+        <div class="item"><input type="checkbox" checked><label><strong>Desktop navbar created</strong><span>Home, About Us, Explore, Journeys, Contact, Enquire Now created.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox" checked><label><strong>Mega menu initial version</strong><span>Explore mega menu created with destinations, experiences, journeys.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Update mega menu links to real pages</strong><span>Once pages exist, mega menu should link to /destinations, /experiences, /journeys and detail pages, not only anchors.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Create mobile menu</strong><span>Premium mobile drawer is still needed for proper client preview and mobile traffic.</span></label><span class="priority p-high">High</span></div>
+      </div>
+    </section>
+
+    <section class="batch">
+      <div class="batch-header">
+        <div>
+          <h3>Batch F — Contact & Conversion Flow</h3>
+          <p>Lead generation flow must be solid before Google Ads traffic.</p>
+        </div>
+        <span class="tag progress">In Progress</span>
+      </div>
+      <div class="items">
+        <div class="item"><input type="checkbox" checked><label><strong>Reusable enquiry form</strong><span>Form creates WhatsApp and email enquiry message.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Form UX QA</strong><span>Test WhatsApp message, email body, required fields, and mobile usability.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Package-specific inquiry</strong><span>When clicking from package detail, enquiry should prefill selected package name.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Google Ads conversion tracking</strong><span>Later add tracking for WhatsApp click, call click, email click, and enquiry submit.</span></label><span class="priority p-high">High</span></div>
+      </div>
+    </section>
+
+    <section class="batch">
+      <div class="batch-header">
+        <div>
+          <h3>Batch G — Responsive & Production QA</h3>
+          <p>Must be done before deployment or serious client presentation.</p>
+        </div>
+        <span class="tag next">Next Priority</span>
+      </div>
+      <div class="items">
+        <div class="item"><input type="checkbox"><label><strong>Desktop QA</strong><span>Check homepage, about, contact, navbar, footer, buttons, hover states, and image loading.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Mobile homepage QA</strong><span>Hero, section spacing, CTA, cards, menu, and form must be checked.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Mobile page QA</strong><span>About, Contact, Journey detail, Destination pages must be checked after created.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Run npm run build</strong><span>Fix TypeScript/build errors before deploy.</span></label><span class="priority p-high">High</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Deploy preview</strong><span>Deploy to Vercel or staging for client approval.</span></label><span class="priority p-high">High</span></div>
+      </div>
+    </section>
+
+    <section class="batch">
+      <div class="batch-header">
+        <div>
+          <h3>Batch H — Backend / CMS Phase</h3>
+          <p>Only start after frontend page structure and content direction are approved.</p>
+        </div>
+        <span class="tag pending">Later</span>
+      </div>
+      <div class="items">
+        <div class="item"><input type="checkbox"><label><strong>NestJS backend setup</strong><span>API for packages, destinations, experiences, enquiries, blog, and settings.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>PostgreSQL schema</strong><span>Journey, Destination, Experience, ItineraryDay, Enquiry, BlogPost, Media models.</span></label><span class="priority p-med">Medium</span></div>
+        <div class="item"><input type="checkbox"><label><strong>Custom admin dashboard</strong><span>Branded admin panel for managing package, itinerary, destination, and blog content.</span></label><span class="priority p-med">Medium</span></div>
+      </div>
+    </section>
+
+    <section class="notes">
+      <h3>Updated Recommendation</h3>
+      <ul>
+        <li>Do not treat this as almost finished. This is still early-mid frontend stage.</li>
+        <li>Next best move: create package data, homepage Packages section, and homepage Itinerary Preview section.</li>
+        <li>After that, create /journeys and /journeys/[slug] pages.</li>
+        <li>Then expand destinations and experiences pages.</li>
+        <li>Only start NestJS backend after content structure is approved.</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
