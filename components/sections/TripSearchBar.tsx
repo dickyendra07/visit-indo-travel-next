@@ -1,6 +1,6 @@
-"use client";
+import Link from "next/link";
 
-const filters = [
+const items = [
   {
     label: "Location",
     value: "Bali, Java, Komodo",
@@ -21,29 +21,29 @@ const filters = [
 
 export function TripSearchBar() {
   return (
-    <section className="relative z-30 bg-[#f7f0e5] px-6 md:px-10">
-      <div className="mx-auto max-w-[1180px] -translate-y-1/2 bg-white text-[#111d18] shadow-[0_26px_80px_rgba(0,0,0,.14)]">
-        <div className="grid border border-black/10 lg:grid-cols-[1fr_1fr_1fr_1fr_160px]">
-          {filters.map((item) => (
-            <button
+    <section className="relative z-20 bg-[#f7f0e5] px-5 pb-8 text-[#07110e] md:px-10">
+      <div className="mx-auto w-full max-w-[1180px] -translate-y-8 overflow-hidden border border-black/10 bg-white shadow-[0_28px_90px_rgba(0,0,0,.14)] md:-translate-y-1/2">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_1fr_180px]">
+          {items.map((item) => (
+            <div
               key={item.label}
-              className="group border-b border-black/10 px-6 py-5 text-left transition hover:bg-[#f7f0e5] lg:border-b-0 lg:border-r"
+              className="border-b border-black/10 px-5 py-5 md:border-b-0 md:border-r md:px-7 md:py-7"
             >
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.24em] text-[#111d18]/36">
+              <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#a8782d]/65">
                 {item.label}
-              </span>
-              <span className="mt-2 block text-[14px] font-medium text-[#111d18]">
+              </p>
+              <p className="text-[14px] font-semibold leading-6 text-[#07110e]">
                 {item.value}
-              </span>
-            </button>
+              </p>
+            </div>
           ))}
 
-          <a
-            href="#contact"
-            className="flex items-center justify-center bg-[#07110e] px-6 py-5 text-[12px] font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#14241c]"
+          <Link
+            href="/contact"
+            className="flex items-center justify-center bg-[#07110e] px-7 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#a8782d] md:py-0"
           >
             Enquire
-          </a>
+          </Link>
         </div>
       </div>
     </section>

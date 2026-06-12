@@ -39,7 +39,7 @@ export function HeroCleanSliderArabic() {
     setActive((value) => (value - 1 + slides.length) % slides.length);
 
   return (
-    <section dir="rtl" className="relative min-h-screen overflow-hidden bg-[#07110e] text-white">
+    <section dir="rtl" className="relative w-full max-w-[100vw] overflow-hidden bg-[#07110e] text-white md:min-h-screen">
       {slides.map((item, index) => (
         <div
           key={item.title}
@@ -53,7 +53,7 @@ export function HeroCleanSliderArabic() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,.16),rgba(0,0,0,.48),rgba(0,0,0,.86))]" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(7,17,14,.12),rgba(7,17,14,.9))]" />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-[1240px] items-center px-6 text-right md:px-10">
+      <div className="relative z-10 mx-auto flex min-h-[760px] w-full max-w-[1240px] items-center px-6 text-right md:px-10">
         <div className="mr-auto max-w-4xl pt-24">
           <p className="mb-6 text-[12px] font-semibold uppercase tracking-[0.34em] text-[#d7aa51]">
             {slide.eyebrow}
