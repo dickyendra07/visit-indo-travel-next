@@ -465,3 +465,98 @@ footer {
 }
 
 /* === VISIT INDO BUTTON READABILITY FIX END === */
+
+/* === ARABIC HOMEPAGE RTL PREMIUM SYNC START === */
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3 {
+  letter-spacing: -0.035em;
+}
+
+[dir="rtl"] p,
+[dir="rtl"] li,
+[dir="rtl"] span {
+  line-height: 1.85;
+}
+
+/* Arabic headings need more breathing room than English */
+[dir="rtl"] .font-display {
+  line-height: 1.06;
+}
+
+/* Keep premium hover behavior identical and smooth */
+[dir="rtl"] article,
+[dir="rtl"] a,
+[dir="rtl"] button {
+  transition-property: color, background-color, border-color, transform, opacity, box-shadow;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Make Arabic dark section copy readable */
+[dir="rtl"] section[class*="bg-[#07110e]"] p,
+[dir="rtl"] section[class*="bg-[#050b09]"] p {
+  color: #d8d1c3;
+}
+
+/* Keep gold labels readable */
+[dir="rtl"] [class*="text-[#d7aa51]"],
+[dir="rtl"] [class*="text-[#a8782d]"] {
+  text-shadow: none;
+}
+
+/* Make image overlay titles always readable */
+[dir="rtl"] article h3,
+[dir="rtl"] article h2 {
+  text-wrap: balance;
+}
+
+/* Buttons readability Arabic */
+[dir="rtl"] a[class*="bg-white"],
+[dir="rtl"] button[class*="bg-white"],
+[dir="rtl"] a[class*="bg-[#fff7e8]"],
+[dir="rtl"] button[class*="bg-[#fff7e8]"] {
+  color: #07110e !important;
+}
+
+[dir="rtl"] a[class*="bg-[#07110e]"],
+[dir="rtl"] button[class*="bg-[#07110e]"],
+[dir="rtl"] a[class*="bg-[#050b09]"],
+[dir="rtl"] button[class*="bg-[#050b09]"] {
+  color: #fff7e8 !important;
+}
+
+[dir="rtl"] a:hover,
+[dir="rtl"] button:hover {
+  text-decoration: none;
+}
+
+/* Arabic cards: same premium lift effect */
+[dir="rtl"] .group:hover {
+  will-change: transform;
+}
+
+/* Arabic mobile readability */
+@media (max-width: 768px) {
+  [dir="rtl"] h1,
+  [dir="rtl"] h2 {
+    line-height: 1.08;
+  }
+
+  [dir="rtl"] p {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  [dir="rtl"] a,
+  [dir="rtl"] button {
+    min-height: 44px;
+  }
+}
+
+/* === ARABIC HOMEPAGE RTL PREMIUM SYNC END === */
