@@ -1,49 +1,47 @@
-import Link from "next/link";
-
-const items = [
-  {
-    label: "Location",
-    value: "Bali, Java, Komodo",
-  },
-  {
-    label: "Travel Style",
-    value: "Family, Couple, Private",
-  },
-  {
-    label: "Comfort",
-    value: "Comfortable, Luxury",
-  },
-  {
-    label: "Group Size",
-    value: "Small, Medium, Large",
-  },
-];
-
 export function TripSearchBar() {
+  const items = [
+    {
+      label: "Destination",
+      value: "Bali, Java, Komodo",
+    },
+    {
+      label: "Travel Type",
+      value: "Family, Couple, Private",
+    },
+    {
+      label: "Comfort Level",
+      value: "Comfortable, Luxury",
+    },
+    {
+      label: "Group Size",
+      value: "Small, Medium, Large",
+    },
+  ];
+
   return (
-    <section className="relative z-20 bg-[#f7f0e5] px-5 pb-8 text-[#07110e] md:px-10">
-      <div className="mx-auto w-full max-w-[1180px] -translate-y-8 overflow-hidden border border-black/10 bg-white shadow-[0_28px_90px_rgba(0,0,0,.14)] md:-translate-y-1/2">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_1fr_180px]">
+    <section className="relative z-20 bg-[#f7f0e5] px-5 py-12 md:px-8 md:py-16">
+      <div className="mx-auto w-full max-w-[1180px]">
+        <div className="grid overflow-hidden border border-black/10 bg-white shadow-[0_22px_70px_rgba(20,15,8,.08)] md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_170px]">
           {items.map((item) => (
             <div
               key={item.label}
-              className="border-b border-black/10 px-5 py-5 md:border-b-0 md:border-r md:px-7 md:py-7"
+              className="flex min-h-[92px] flex-col justify-center border-b border-black/10 px-6 md:border-r md:px-7 lg:min-h-[104px] lg:border-b-0"
             >
-              <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#a8782d]/65">
+              <span className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#b9934d]">
                 {item.label}
-              </p>
-              <p className="text-[14px] font-semibold leading-6 text-[#07110e]">
+              </span>
+              <span className="text-[17px] font-semibold leading-tight tracking-[-0.03em] text-[#07110e] md:text-[19px]">
                 {item.value}
-              </p>
+              </span>
             </div>
           ))}
 
-          <Link
-            href="/contact"
-            className="flex items-center justify-center bg-[#07110e] px-7 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#a8782d] md:py-0"
+          <a
+            href="#contact"
+            className="flex min-h-[92px] items-center justify-center bg-[#07110e] px-8 text-[11px] font-bold uppercase tracking-[0.32em] text-white transition hover:bg-[#d7aa51] hover:text-[#07110e] lg:min-h-[104px]"
           >
             Enquire
-          </Link>
+          </a>
         </div>
       </div>
     </section>
