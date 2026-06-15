@@ -1,47 +1,56 @@
+import Link from "next/link";
+
+const searchItems = [
+  {
+    label: "Destination",
+    value: "Bali, Java, Komodo",
+  },
+  {
+    label: "Travel Type",
+    value: "Family, Couple, Private",
+  },
+  {
+    label: "Comfort Level",
+    value: "Comfortable, Luxury",
+  },
+  {
+    label: "Group Size",
+    value: "Small, Medium, Large",
+  },
+];
+
 export function TripSearchBar() {
-  const items = [
-    {
-      label: "Destination",
-      value: "Bali, Java, Komodo",
-    },
-    {
-      label: "Travel Type",
-      value: "Family, Couple, Private",
-    },
-    {
-      label: "Comfort Level",
-      value: "Comfortable, Luxury",
-    },
-    {
-      label: "Group Size",
-      value: "Small, Medium, Large",
-    },
-  ];
-
   return (
-    <section className="relative z-20 bg-[#f7f0e5] px-5 py-12 md:px-8 md:py-16">
-      <div className="mx-auto w-full max-w-[1180px]">
-        <div className="grid overflow-hidden border border-black/10 bg-white shadow-[0_22px_70px_rgba(20,15,8,.08)] md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_170px]">
-          {items.map((item) => (
-            <div
-              key={item.label}
-              className="flex min-h-[92px] flex-col justify-center border-b border-black/10 px-6 md:border-r md:px-7 lg:min-h-[104px] lg:border-b-0"
-            >
-              <span className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#b9934d]">
-                {item.label}
-              </span>
-              <span className="text-[17px] font-semibold leading-tight tracking-[-0.03em] text-[#07110e] md:text-[19px]">
-                {item.value}
-              </span>
-            </div>
-          ))}
+    <section className="relative z-30 -mt-12 bg-[#f7f0e5] px-6 pb-12 pt-8 md:px-10 md:pb-16 md:pt-10">
+      <div className="mx-auto max-w-[1240px]">
+        <div className="overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-[0_28px_80px_rgba(7,17,14,.10)]">
+          <div className="grid lg:grid-cols-[repeat(4,1fr)_190px]">
+            {searchItems.map((item) => (
+              <div
+                key={item.label}
+                className="border-b border-black/10 px-6 py-7 last:border-b-0 md:px-8 md:py-8 lg:border-b-0 lg:border-r"
+              >
+                <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.26em] text-[#a8782d]">
+                  {item.label}
+                </p>
+                <p className="text-[18px] font-semibold leading-7 text-[#07110e] md:text-[20px]">
+                  {item.value}
+                </p>
+              </div>
+            ))}
 
-          <a
-            href="#contact"
-            className="flex min-h-[92px] items-center justify-center bg-[#07110e] px-8 text-[11px] font-bold uppercase tracking-[0.32em] text-white transition hover:bg-[#d7aa51] hover:text-[#07110e] lg:min-h-[104px]"
-          >
-            Enquire
-          </a>
+            <Link
+              href="#contact"
+              className="group flex items-center justify-between bg-[#07110e] px-6 py-6 text-[#fff7e8] transition hover:bg-[#a8782d] md:px-8 lg:flex-col lg:items-start lg:justify-center"
+            >
+              <span className="text-[12px] font-bold uppercase tracking-[0.28em]">
+                Enquire
+              </span>
+              <span className="mt-0 flex h-9 w-9 items-center justify-center rounded-full border border-white/25 text-lg transition group-hover:border-white/55 lg:mt-5">
+                →
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

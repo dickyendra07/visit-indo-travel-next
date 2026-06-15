@@ -409,3 +409,59 @@ footer {
   }
 }
 /* === HARD MOBILE OVERFLOW FIX — VISIT INDO END === */
+
+/* === VISIT INDO BUTTON READABILITY FIX START === */
+
+.vit-btn-light {
+  background: #fff7e8 !important;
+  color: #07110e !important;
+  border-color: rgba(7, 17, 14, 0.16) !important;
+  text-shadow: none !important;
+}
+
+.vit-btn-light:hover {
+  background: #e7c777 !important;
+  color: #07110e !important;
+  border-color: #e7c777 !important;
+}
+
+.vit-btn-dark {
+  background: #07110e !important;
+  color: #fff7e8 !important;
+  border-color: #07110e !important;
+  text-shadow: none !important;
+}
+
+.vit-btn-dark:hover {
+  background: #a8782d !important;
+  color: #fff7e8 !important;
+  border-color: #a8782d !important;
+}
+
+.vit-btn-outline-dark {
+  background: #ffffff !important;
+  color: #07110e !important;
+  border-color: rgba(7, 17, 14, 0.18) !important;
+  text-shadow: none !important;
+}
+
+.vit-btn-outline-dark:hover {
+  background: #07110e !important;
+  color: #fff7e8 !important;
+  border-color: #07110e !important;
+}
+
+.vit-btn-outline-light {
+  background: rgba(7, 17, 14, 0.08) !important;
+  color: #fff7e8 !important;
+  border-color: rgba(255, 247, 232, 0.38) !important;
+  text-shadow: none !important;
+}
+
+.vit-btn-outline-light:hover {
+  background: #fff7e8 !important;
+  color: #07110e !important;
+  border-color: #fff7e8 !important;
+}
+
+/* === VISIT INDO BUTTON READABILITY FIX END === */

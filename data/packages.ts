@@ -42,19 +42,37 @@ export const travelPackages: TravelPackage[] = [
         day: "Day 02",
         title: "Borobudur & Heritage Route",
         description:
-          "Visit Borobudur, royal heritage areas, local villages, and curated cultural stops.",
+          "Visit Borobudur, royal heritage areas, local villages, and curated cultural stops around Central Java.",
       },
       {
         day: "Day 03",
+        title: "Yogyakarta Cultural Day",
+        description:
+          "Explore palace heritage, local craft areas, traditional dining, and a flexible evening at your own pace.",
+      },
+      {
+        day: "Day 04",
         title: "Journey to East Java",
         description:
           "Comfortable private transfer or train route toward the volcanic landscapes of East Java.",
       },
       {
-        day: "Day 04",
+        day: "Day 05",
         title: "Bromo Sunrise",
         description:
-          "Early morning private jeep experience to witness Mount Bromo at sunrise.",
+          "Early morning private jeep experience to witness Mount Bromo at sunrise with a relaxed recovery schedule.",
+      },
+      {
+        day: "Day 06",
+        title: "Ijen or Scenic Extension",
+        description:
+          "Continue toward Ijen, coastal areas, or a softer nature route depending on your preferred travel pace.",
+      },
+      {
+        day: "Day 07",
+        title: "Departure or Bali Connection",
+        description:
+          "Final transfer arrangement for airport departure or onward private connection toward Bali.",
       },
     ],
   },
