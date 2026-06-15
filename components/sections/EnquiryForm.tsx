@@ -96,7 +96,7 @@ export function EnquiryForm() {
   return (
     <form
       onSubmit={submitToWhatsApp}
-      className="relative z-10 overflow-hidden rounded-[2rem] border border-black/10 bg-white p-5 shadow-[0_30px_90px_rgba(7,17,14,.1)] md:p-7 lg:p-8"
+      className="pointer-events-auto relative z-30 overflow-hidden rounded-[2rem] border border-black/10 bg-white p-5 shadow-[0_30px_90px_rgba(7,17,14,.1)] md:p-7 lg:p-8"
     >
       <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#d7aa51]/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-28 -left-28 h-64 w-64 rounded-full bg-[#07110e]/5 blur-3xl" />

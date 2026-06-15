@@ -394,5 +394,50 @@ import { ItineraryPreview } from"@/components/sections/ItineraryPreview"; const 
       </section>
 
       <PackagesSection /> <ItineraryPreview />
- <section id="contact" className="bg-[#f7f0e5] py-24 text-[#111d18] md:py-32"> <div className="mx-auto grid max-w-[1240px] gap-12 px-6 md:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start"> <div> <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#a8782d]"> Enquire Now </p> <h2 className="font-display text-[46px] leading-[0.95] tracking-[-0.045em] md:text-[72px]"> Begin with a private consultation. </h2> <p className="mt-7 max-w-xl text-[17px] leading-9 text-[#111d18]/65"> Tell us your dates, group size, preferred destinations, and travel style. Our team will help prepare the right direction for your Indonesia journey. </p> <div className="mt-9 space-y-3 text-[15px] text-[#111d18]/70"> <p>Phone: +62 813-3729-536</p> <p>WhatsApp: +62 812-2045-5846</p> <p>Email: info@visitindotravel.com</p> </div> </div> <EnquiryForm /> </div> </section> </main> <Footer /> <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3"> <a href="tel:+628133729536" className="flex h-13 w-13 items-center justify-center rounded-full bg-white text-[#07110e] shadow-2xl" aria-label="Call Visit Indo Travel" > ☎ </a> <a href="https://wa.me/6281220455846" className="flex h-13 w-13 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl" aria-label="WhatsApp Visit Indo Travel" > ✆ </a> </div> </> );
+ <section id="contact" className="relative overflow-hidden bg-[#f7f0e5] py-20 text-[#111d18] md:py-28">
+        <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-[#d7aa51]/12 blur-3xl" />
+        <div className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-[#07110e]/5 blur-3xl" />
+
+        <div className="relative z-10 w-full px-6 md:px-10 lg:px-14 xl:px-20">
+          <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+            <div className="lg:sticky lg:top-32">
+              <p className="mb-5 text-[12px] font-bold uppercase tracking-[0.32em] text-[#a8782d]">
+                Enquire Now
+              </p>
+
+              <h2 className="font-display max-w-3xl text-[48px] leading-[0.92] tracking-[-0.055em] text-[#07110e] md:text-[76px]">
+                Begin with a private consultation.
+              </h2>
+
+              <p className="mt-7 max-w-2xl text-[17px] leading-9 text-[#28352e]/72 md:text-[19px] md:leading-10">
+                Tell us your dates, group size, preferred destinations, and travel style. Our team will help prepare the right direction for your Indonesia journey.
+              </p>
+
+              <div className="mt-9 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                {[
+                  ["Phone", "+62 813-3729-536"],
+                  ["WhatsApp", "+62 812-2045-5846"],
+                  ["Email", "info@visitindotravel.com"],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className="rounded-[1.5rem] border border-black/10 bg-white/70 p-5 shadow-[0_18px_50px_rgba(7,17,14,.06)]"
+                  >
+                    <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#a8782d]">
+                      {label}
+                    </p>
+                    <p className="text-[14px] leading-7 text-[#28352e]/72">
+                      {value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative z-30 pointer-events-auto">
+              <EnquiryForm />
+            </div>
+          </div>
+        </div>
+      </section> </main> <Footer /> <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3"> <a href="tel:+628133729536" className="flex h-13 w-13 items-center justify-center rounded-full bg-white text-[#07110e] shadow-2xl" aria-label="Call Visit Indo Travel" > ☎ </a> <a href="https://wa.me/6281220455846" className="flex h-13 w-13 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl" aria-label="WhatsApp Visit Indo Travel" > ✆ </a> </div> </> );
 }
