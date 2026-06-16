@@ -6,7 +6,9 @@ import { TripSearchBar } from"@/components/sections/TripSearchBar";
 import { EnquiryForm } from"@/components/sections/EnquiryForm";
 import { DestinationExplorer } from"@/components/sections/DestinationExplorer";
 import { PackagesSection } from"@/components/sections/PackagesSection";
-import { ItineraryPreview } from"@/components/sections/ItineraryPreview"; const focusItems = [ { title:"Luxury Stays", text:"Selected villas, boutique hotels, and refined accommodation recommendations for private travelers.", }, { title:"Private Transfers", text:"Airport pickup, personal drivers, intercity transfers, and comfortable ground arrangements.", }, { title:"Curated Experiences", text:"Cultural routes, scenic landscapes, local dining, nature escapes, and special-access moments.", },
+import { ItineraryPreview } from"@/components/sections/ItineraryPreview";
+import { InclusionsSection } from "@/components/sections/InclusionsSection";
+import { HotelOptionsSection } from "@/components/sections/HotelOptionsSection"; const focusItems = [ { title:"Luxury Stays", text:"Selected villas, boutique hotels, and refined accommodation recommendations for private travelers.", }, { title:"Private Transfers", text:"Airport pickup, personal drivers, intercity transfers, and comfortable ground arrangements.", }, { title:"Curated Experiences", text:"Cultural routes, scenic landscapes, local dining, nature escapes, and special-access moments.", },
 ]; const journeys = [ { title:"Java Discovery Journey", duration:"7 Days 6 Nights", image:"https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=1400&q=85", }, { title:"Romantic Indonesia Honeymoon", duration:"6 Days 5 Nights", image:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1400&q=85", }, { title:"Bali and Eastern Islands", duration:"Custom Journey", image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1400&q=85", },
 ]; const regions = ["Bali & Eastern Islands","Java","Sumatra","Kalimantan","Sulawesi","Maluku","Papua",
 ]; export default function Home() { return ( <> <Navbar /> <main className="bg-[#07110e] text-white"> <HeroCleanSlider /> <TripSearchBar /> <section id="story" className="relative overflow-hidden bg-[#f7f0e5] text-[#111d18]">
@@ -393,7 +395,7 @@ import { ItineraryPreview } from"@/components/sections/ItineraryPreview"; const 
         </div>
       </section>
 
-      <PackagesSection /> <ItineraryPreview />
+      <PackagesSection /> <InclusionsSection /> <HotelOptionsSection /> <ItineraryPreview />
  <section id="contact" className="relative overflow-hidden bg-[#f7f0e5] py-20 text-[#111d18] md:py-28">
         <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-[#d7aa51]/12 blur-3xl" />
         <div className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-[#07110e]/5 blur-3xl" />

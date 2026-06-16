@@ -3,6 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroCleanSliderArabic } from "@/components/sections/HeroCleanSliderArabic";
 import { EnquiryForm } from "@/components/sections/EnquiryForm";
+import { InclusionsSectionArabic } from "@/components/sections/InclusionsSectionArabic";
+import { HotelOptionsSectionArabic } from "@/components/sections/HotelOptionsSectionArabic";
 import { travelPackages } from "@/data/packages";
 import { destinations } from "@/data/destinations";
 
@@ -544,6 +546,10 @@ export default function ArabicHomePage() {
             </div>
           </div>
         </section>
+
+        <InclusionsSectionArabic />
+
+        <HotelOptionsSectionArabic />
 
         <section className="relative overflow-hidden bg-[#07110e] py-20 text-white md:py-28">
           <div
