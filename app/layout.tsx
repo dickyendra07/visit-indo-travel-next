@@ -41,13 +41,51 @@ export default function RootLayout({
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+            window.gtag = window.gtag || gtag;
 
+            gtag('js', new Date());
             gtag('config', 'AW-17514030878');
+
+            window.gtagSendEvent = function(url) {
+              var callback = function () {
+                if (typeof url === 'string') {
+                  window.location = url;
+                }
+              };
+
+              if (typeof window.gtag === 'function') {
+                window.gtag('event', 'ads_conversion_Hubungi_Kami_1', {
+                  event_callback: callback,
+                  event_timeout: 2000
+                });
+              } else {
+                callback();
+              }
+
+              return false;
+            };
+
+            document.addEventListener('click', function(event) {
+              var target = event.target && event.target.closest ? event.target.closest('a') : null;
+              if (!target) return;
+
+              var href = target.getAttribute('href') || '';
+              var shouldTrack =
+                href === '#contact' ||
+                href.indexOf('wa.me') !== -1 ||
+                href.indexOf('whatsapp') !== -1 ||
+                href.indexOf('tel:') === 0 ||
+                href.indexOf('mailto:') === 0;
+
+              if (!shouldTrack) return;
+
+              event.preventDefault();
+              window.gtagSendEvent(target.href || href);
+            });
           `}
         </Script>
 
-        {children}
+{children}
       </body>
     </html>
   );
